@@ -7,14 +7,20 @@ public class MakingAGameLab5 {
         gameBackgroud g = new gameBackgroud();
 
         while(g.initialValue <= 21) {
+
+            g.ContinueGame();
+
             if(g.initialValue > 21){
                 System.out.println("You went bust");
+                break;
             }
             else if(g.initialValue == 21) {
                 System.out.println("CONGRATULATIONS YOU HIT 21!! ");
+                break;
             }
-            else{
-                g.ContinueGame();
+            else if(g.userChoice.equalsIgnoreCase("HOLD")) {
+                System.out.println("You held at: " + g.initialValue);
+                break;
             }
         }
     }
@@ -49,9 +55,9 @@ public class MakingAGameLab5 {
         eight(8),
         nine(9),
         ten(10),
-        jack(11),
-        queen(12),
-        king(13);
+        jack(10),
+        queen(10),
+        king(10);
 
         int cardValue;
 
@@ -89,11 +95,11 @@ public class MakingAGameLab5 {
         System.out.println("Do you want to DRAW another card, or HOLD? ");
         userChoice = s.nextLine();
 
-        if(userChoice.equals("HOLD")){
+        if(userChoice.equalsIgnoreCase("HOLD")){
             System.out.println("return");
             return initialValue;
         }
-        else if(userChoice.equals("DRAW")){
+        else if(userChoice.equalsIgnoreCase("DRAW")){
             this.initialValue += r.getCard();
             System.out.println("Your value is: " + initialValue);
         }
